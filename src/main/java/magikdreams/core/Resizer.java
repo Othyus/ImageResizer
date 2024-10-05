@@ -69,7 +69,7 @@ public class Resizer {
             final String[] fileData = splitFileNameAndExtension(file.getName());
             final BufferedImage resizedImage = resizeImage(sourceImage, percentage, fileData[1]);
 
-            final File outputFile = new File(outputDirectory + FileSystems.getDefault().getSeparator() + outputPattern.replaceAll("\\$i", "" + count) + "." + fileData[1]);
+            final File outputFile = new File(outputDirectory + FileSystems.getDefault().getSeparator() + outputPattern.replaceAll("\\$i", "" + (count+1)) + "." + fileData[1]);
             final boolean created = outputFile.createNewFile();
             if (!created) {
                 mainPanel.popup("Impossible de créer le fichier");
