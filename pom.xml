@@ -40,6 +40,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-delivery</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <target name="Production">
+                                <mkdir dir="target/ImageResizer"/>
+                                <copy file="src/main/resources/run.bat" tofile="target/ImageResizer/run.bat"/>
+                                <copy file="src/main/resources/icon_image.ico" tofile="target/ImageResizer/icon_image.ico"/>
+                                <move file="target/ImageResizer-1.0-SNAPSHOT-jar-with-dependencies.jar" tofile="target/ImageResizer/ImageResizer.jar"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>
